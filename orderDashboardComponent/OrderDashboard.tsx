@@ -23,11 +23,11 @@ import {
   Sale,
   updateOrder,
   updateSale,
-} from "@/app/actions/dashboard/orderAPI/route";
+} from "@/app/actions/dashboard/orderAPI/service";
 import OrderForm from "./OrderForm";
 import SaleForm from "@/SaleDashboard/SaleForm";
 import { toast } from "react-toastify";
-import { fetchProducts } from "@/app/actions/dashboard/productAPI/route";
+import { fetchProducts } from "@/app/actions/dashboard/productAPI/service";
 
 import { OrderTrue } from "@/models/OrderTrue";
 import { dataProductTable } from "@/dashboardComponents/dashboard/ProductTable";

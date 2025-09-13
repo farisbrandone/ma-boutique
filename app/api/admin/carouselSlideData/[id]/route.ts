@@ -1,11 +1,13 @@
-import { Params } from "@/app/api/orders/[id]/route";
 import dbConnect, { disconnect } from "@/app/lib/mongodb";
 import { auth } from "@/auth";
 import CarouselSlide from "@/models/CarouselSlide";
 import ProductTrue from "@/models/ProductTrue";
 import { NextResponse } from "next/server";
 
-const handler = async (req: Request, { params }: Params) => {
+const handler = async (
+  req: Request,
+  { params }: { params: { id: string } }
+) => {
   const session = await auth();
   const { id } = params;
   console.log({ id });

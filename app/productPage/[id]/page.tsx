@@ -1,5 +1,5 @@
 import Header from "@/component-home/HeaderHome";
-import { API_URL } from "@/app/actions/dashboard/productAPI/route";
+import { API_URL } from "@/app/actions/dashboard/productAPI/service";
 import ProductTrue from "@/models/ProductTrue";
 import ProductDetails from "@/component-card-detail/CardDetail";
 const exampleProduct = {

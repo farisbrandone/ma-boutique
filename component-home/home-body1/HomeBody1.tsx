@@ -2,7 +2,7 @@
 import React from "react";
 import CarouselInfinite from "./CarousselInfinite";
 import Sidebar from "./Sidebar";
-import { CarouselSlide } from "@/app/actions/dashboard/carouselAPI/route";
+import { CarouselSlide } from "@/app/actions/dashboard/carouselAPI/service";
 
 const HomeBody1 = ({ slides }: { slides: CarouselSlide[] }) => {
   return (

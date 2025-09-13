@@ -2,7 +2,7 @@
 import {
   API_URL,
   fetchProducts,
-} from "@/app/actions/dashboard/productAPI/route";
+} from "@/app/actions/dashboard/productAPI/service";
 import ProductTrue from "@/models/ProductTrue";
 // hooks/useInfiniteProducts.ts
 

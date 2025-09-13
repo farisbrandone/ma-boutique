@@ -1,7 +1,7 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 import { Product } from "../types/product";
-import { updateProductField } from "@/app/actions/dashboard/productAPI/route";
+import { updateProductField } from "@/app/actions/dashboard/productAPI/service";
 
 export const useOptimisticToggle = () => {
   const queryClient = useQueryClient();

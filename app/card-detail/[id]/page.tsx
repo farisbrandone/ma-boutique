@@ -1,6 +1,6 @@
 import ProductCard from "@/component-card-detail/CardDetail";
 import Header from "@/component-home/HeaderHome";
-import { API_URL } from "@/app/actions/dashboard/productAPI/route";
+import { API_URL } from "@/app/actions/dashboard/productAPI/service";
 import ProductTrue from "@/models/ProductTrue";
 
 const exampleProduct = {

@@ -19,7 +19,7 @@ import {
   fetchCarouselSlides,
   reorderSlides,
   updateSlide,
-} from "@/app/actions/dashboard/carouselAPI/route";
+} from "@/app/actions/dashboard/carouselAPI/service";
 import axios from "axios";
 import { LoadingComponent } from "@/dashboardComponents/dashboard/LoadingComponent";
 import { toast } from "react-toastify";

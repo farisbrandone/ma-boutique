@@ -2,7 +2,7 @@ import React from "react";
 import { useQuery } from "@tanstack/react-query";
 
 import { FiX } from "react-icons/fi";
-import { fetchProductSalesHistory } from "@/app/actions/dashboard/productAPI/route";
+import { fetchProductSalesHistory } from "@/app/actions/dashboard/productAPI/service";
 
 interface ProductSalesHistoryProps {
   productId: string;

@@ -1,5 +1,5 @@
 import { SalesSummary } from "@/dashboardComponents/types/product";
-import { API_URL } from "../productAPI/route";
+import { API_URL } from "../productAPI/service";
 
 export const fetchSalesSummary = async (
   startDate: string,

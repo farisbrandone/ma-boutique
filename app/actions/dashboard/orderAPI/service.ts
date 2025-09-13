@@ -1,7 +1,7 @@
 // src/api/orderAPI.ts
 
 import { OrderTrue } from "@/models/OrderTrue";
-import { API_URL } from "../productAPI/route";
+import { API_URL } from "../productAPI/service";
 
 // Interfaces basées sur les modèles Mongoose
 interface CustomerInfo {

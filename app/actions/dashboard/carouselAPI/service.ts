@@ -1,6 +1,6 @@
 // src/api/carouselAPI.ts
 
-import { API_URL } from "../productAPI/route";
+import { API_URL } from "../productAPI/service";
 
 export interface CarouselSlide {
   _id: string;

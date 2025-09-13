@@ -7,7 +7,7 @@ import {
   fetchProducts,
   updateProductField,
   updateProductField2,
-} from "@/app/actions/dashboard/productAPI/route";
+} from "@/app/actions/dashboard/productAPI/service";
 import { Product } from "../types/product";
 import ProductSalesHistory from "./ProductSalesHistory";
 import { FiFilter, FiArrowUp, FiArrowDown, FiSearch } from "react-icons/fi";

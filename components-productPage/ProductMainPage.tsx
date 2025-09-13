@@ -3,7 +3,7 @@ import HomeBody1 from "@/component-home/home-body1/HomeBody1";
 import ScrollToTopButton from "@/components/ScrollToTopButton";
 import React from "react";
 import ProductPage from "./ProductPage";
-import { CarouselSlide } from "@/app/actions/dashboard/carouselAPI/route";
+import { CarouselSlide } from "@/app/actions/dashboard/carouselAPI/service";
 import HomeBodyPage from "./HomeBodyPage";
 
 interface HomeComponentProps {

@@ -1,4 +1,3 @@
-import { fetchProductsDisplay } from "@/app/actions/dashboard/productAPI/route";
 import ProductTrue from "@/models/ProductTrue";
 import { useRouter } from "next/navigation";
 import React, { useState, useEffect, useRef } from "react";

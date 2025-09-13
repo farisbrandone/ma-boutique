@@ -1,5 +1,5 @@
 "use client";
-import { CarouselSlide } from "@/app/actions/dashboard/carouselAPI/route";
+import { CarouselSlide } from "@/app/actions/dashboard/carouselAPI/service";
 import Header from "./HeaderHome";
 import HomeBody1 from "./home-body1/HomeBody1";
 import { HomeBody2 } from "./home-body2/HomeBody2";

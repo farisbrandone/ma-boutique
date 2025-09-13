@@ -1,10 +1,6 @@
-import Header from "@/component-home/HeaderHome";
-import HomeBody1 from "@/component-home/home-body1/HomeBody1";
-import ProductPage from "@/components-productPage/ProductPage";
-import ScrollToTopButton from "@/components/ScrollToTopButton";
 import React from "react";
 
-import { API_URL } from "../actions/dashboard/productAPI/route";
+import { API_URL } from "../actions/dashboard/productAPI/service";
 import ProductMainPage from "@/components-productPage/ProductMainPage";
 
 export default async function page() {

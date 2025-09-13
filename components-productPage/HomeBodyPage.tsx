@@ -1,7 +1,7 @@
 "use client";
 import React from "react";
 
-import { CarouselSlide } from "@/app/actions/dashboard/carouselAPI/route";
+import { CarouselSlide } from "@/app/actions/dashboard/carouselAPI/service";
 import Sidebar from "@/component-home/home-body1/Sidebar";
 import CarouselInfinite from "@/component-home/home-body1/CarousselInfinite";
 

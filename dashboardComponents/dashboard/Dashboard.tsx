@@ -13,7 +13,7 @@ import {
   addProduct,
   deleteProduct,
   updateProduct,
-} from "@/app/actions/dashboard/productAPI/route";
+} from "@/app/actions/dashboard/productAPI/service";
 import ProductTrue from "@/models/ProductTrue";
 
 const Dashboard: React.FC = () => {

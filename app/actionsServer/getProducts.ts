@@ -1,6 +1,6 @@
 "use server";
 
-import { API_URL } from "../actions/dashboard/productAPI/route";
+import { API_URL } from "../actions/dashboard/productAPI/service";
 
 export const fetchProductWithId = async (id: string): Promise<void> => {
   const response = await fetch(`${API_URL}/admin/productsTrue/${id}`, {

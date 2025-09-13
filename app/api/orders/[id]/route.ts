@@ -9,7 +9,10 @@ export interface Params {
   };
 }
 
-export const GET = async (req: Request, { params }: Params) => {
+export const GET = async (
+  req: Request,
+  { params }: { params: { id: string } }
+) => {
   const session = await auth();
   const { id } = params;
   if (!session) {

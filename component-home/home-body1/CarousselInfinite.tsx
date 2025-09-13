@@ -3,7 +3,7 @@
 import {
   CarouselSlide,
   fetchCarouselSlides,
-} from "@/app/actions/dashboard/carouselAPI/route";
+} from "@/app/actions/dashboard/carouselAPI/service";
 import Image from "next/image";
 import React, { useState, useEffect, useRef } from "react";
 

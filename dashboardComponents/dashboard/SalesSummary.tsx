@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 
 import { format } from "date-fns";
-import { fetchSalesSummary } from "@/app/actions/dashboard/salesAPI/route";
+import { fetchSalesSummary } from "@/app/actions/dashboard/salesAPI/service";
 
 const SalesSummary: React.FC = () => {
   const [startDate, setStartDate] = useState<string>(

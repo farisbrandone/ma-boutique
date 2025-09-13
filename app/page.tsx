@@ -4,7 +4,7 @@ import {
   API_URL,
   fetchBestSellers,
   fetchProductsDisplay,
-} from "./actions/dashboard/productAPI/route";
+} from "./actions/dashboard/productAPI/service";
 import ProductTrue from "@/models/ProductTrue";
 
 export default async function page() {
