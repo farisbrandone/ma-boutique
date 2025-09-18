@@ -11,15 +11,15 @@ export default function NotFound() {
             404 Not Found
           </p>
           <p className="text-[16px] text-center ">
-            La page que vous recherchée n'a pas été trouvée. Vous pouvez aller à
-            la page d'accueil.
+            La page que vous recherchée n&apos;a pas été trouvée. Vous pouvez
+            aller à la page d&apos;accueil.
           </p>
         </div>
         <Link
           href="/home"
           className="px-6 py-3 bg-[#bd4444] text-white rounded-lg mt-[20px] "
         >
-          Retour à l'accueil
+          Retour à l&apos;accueil
         </Link>
       </div>
     </div>

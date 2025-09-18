@@ -3,7 +3,7 @@ import { Geist, Geist_Mono, Fredoka } from "next/font/google";
 import "./globals.css";
 import { SessionProvider } from "next-auth/react";
 import { StoreProvide } from "@/utils/Store";
-import { PayPalScriptProvider } from "@paypal/react-paypal-js";
+
 import { FooterHome } from "@/component-home/footerHome/FooterHome";
 
 const geistSans = Geist({

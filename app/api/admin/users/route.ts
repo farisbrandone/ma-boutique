@@ -4,6 +4,7 @@ import User from "@/models/User";
 import { NextResponse } from "next/server";
 
 const handler = async (req: Request) => {
+  console.log(req);
   const session = await auth();
   if (!session || (session && !session.user.isAdmin)) {
     return NextResponse.json(

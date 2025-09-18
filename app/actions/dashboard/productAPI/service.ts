@@ -1,5 +1,4 @@
 import { Product, SalesHistoryItem } from "@/dashboardComponents/types/product";
-import ProductTrue from "@/models/ProductTrue";
 
 export const API_URL =
   process.env.REACT_APP_API_URL || "http://localhost:3000/api";
@@ -108,6 +107,7 @@ export const updateProductField2 = async (
 export const fetchProductSalesHistory2 = async (
   productId: number
 ): Promise<SalesHistoryItem[]> => {
+  console.log(productId);
   return new Promise((resolve) => {
     setTimeout(() => {
       resolve([
@@ -154,9 +154,11 @@ export const fetchProducts = async (
     category?: string;
     sortField?: keyof Product;
     sortDirection?: "asc" | "desc";
-  } = {}
+  } = {},
+  screen?: boolean
 ) => {
   const params = new URLSearchParams({
+    screen: screen ? "true" : "false",
     page: page.toString(),
     pageSize: pageSize.toString(),
     ...(filters.name && { name: filters.name }),
@@ -164,6 +166,8 @@ export const fetchProducts = async (
     ...(filters.sortField && { sortField: filters.sortField }),
     ...(filters.sortDirection && { sortDirection: filters.sortDirection }),
   });
+
+  console.log(params);
 
   console.log({ url: `${API_URL}/admin/productsTrue?${params}` });
 

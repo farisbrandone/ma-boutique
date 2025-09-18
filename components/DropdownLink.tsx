@@ -2,7 +2,7 @@ import Link from "next/link";
 import React from "react";
 
 function DropdownLink(props: any) {
-  const { href, logout, children, ...rest } = props;
+  const { href, logout, children } = props;
 
   return (
     <Link

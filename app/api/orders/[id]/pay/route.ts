@@ -2,8 +2,6 @@ import dbConnect, { disconnect } from "@/app/lib/mongodb";
 
 import Order from "@/models/Order";
 
-import { useSession } from "next-auth/react";
-
 import { NextResponse } from "next/server";
 import { Params } from "../route";
 import { auth } from "@/auth";

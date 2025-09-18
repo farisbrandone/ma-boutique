@@ -19,6 +19,8 @@ export default function Auth({
     },
   });
 
+  console.log(adminOnly);
+
   if (status === "loading") {
     return <div>Loading...</div>;
   }

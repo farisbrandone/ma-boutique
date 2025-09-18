@@ -59,6 +59,8 @@ const CarouselDashboard = () => {
     fileInputRef.current?.click();
   };
 
+  console.log(selectedImage);
+
   const createMutation = useMutation({
     mutationFn: (formData: FormData) => createSlide(formData),
     onSuccess: () => {
@@ -194,6 +196,7 @@ const CarouselDashboard = () => {
     } catch (error) {
       setLoadingUpload(false);
       toast.error("Une erreur est survenue");
+      console.log(error);
     }
   };
 
@@ -269,7 +272,7 @@ const CarouselDashboard = () => {
                 onClick={triggerFileInput}
                 className="mt-2 text-sm text-blue-600 hover:text-blue-800"
               >
-                Changer l'image
+                Changer l&apos;image
               </button>
             </div>
 

@@ -1,5 +1,5 @@
 import dbConnect, { disconnect } from "@/app/lib/mongodb";
-import { auth } from "@/auth";
+
 import ProductTrue from "@/models/ProductTrue";
 import { NextResponse } from "next/server";
 const handler = async (req: Request) => {

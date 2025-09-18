@@ -9,6 +9,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import { LoadingComponent } from "./LoadingComponent";
 import ProductTrue from "@/models/ProductTrue";
+import { categorieProduct } from "../types/product";
 
 interface ProductFormProps {
   product?: ProductTrue;
@@ -16,6 +17,17 @@ interface ProductFormProps {
   onSubmit: (data: ProductFormValues, imageUrl?: string[]) => Promise<void>;
   isLoading: boolean;
 }
+
+const arrayOfCategorieProduct = [
+  "vêtements Femmes",
+  "vêtements Hommes",
+  "Electronics",
+  "Maison et confort",
+  "Sport",
+  "Jouets pour enfant",
+  "Sacs",
+  "Sous vetement",
+];
 
 const ProductForm: React.FC<ProductFormProps> = ({
   product,
@@ -197,7 +209,7 @@ const ProductForm: React.FC<ProductFormProps> = ({
                   disabled={loadingUpload}
                 >
                   <FiUpload size={40} />
-                  <span className="mt-2">Cliquer pour uploader</span>
+                  <span className="mt-2">Cliquer pour insérer une image</span>
                   {loadingUpload && (
                     <div className=" flex items-center justify-center absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 ">
                       <LoadingComponent width={25} height={25} />
@@ -235,10 +247,23 @@ const ProductForm: React.FC<ProductFormProps> = ({
 
             <div>
               <label className="block text-gray-700 mb-2">Catégorie</label>
-              <input
+
+              <select
                 {...register("category")}
                 className="w-full px-3 py-2 border rounded-lg"
-              />
+              >
+                {arrayOfCategorieProduct.map((categorie) => (
+                  <option value={categorie.toLowerCase().replace(/ /g, "-")}>
+                    {" "}
+                    {categorie}{" "}
+                  </option>
+                ))}
+              </select>
+
+              {/*   <input
+                {...register("category")}
+                className="w-full px-3 py-2 border rounded-lg"
+              /> */}
               <ErrorMessage message={errors.category?.message} />
             </div>
 

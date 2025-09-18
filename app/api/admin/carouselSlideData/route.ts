@@ -1,6 +1,5 @@
 import dbConnect, { disconnect } from "@/app/lib/mongodb";
-import { auth } from "@/auth";
-import ProductTrue from "@/models/ProductTrue";
+
 import { NextResponse } from "next/server";
 
 import CarouselSlide from "@/models/CarouselSlide";
@@ -17,7 +16,7 @@ const handler = async (req: Request) => {
       }
     );
   } */
-  console.log("sousou");
+
   if (req.method === "GET") {
     try {
       console.log("sousou1");
@@ -89,6 +88,7 @@ const postHandler = async (req: Request) => {
       }
     );
   } catch (error) {
+    console.log(error);
     await disconnect();
     return NextResponse.json(
       {

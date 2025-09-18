@@ -3,7 +3,7 @@
 import { LoadingComponent } from "@/dashboardComponents/dashboard/LoadingComponent";
 import { useInfiniteProducts } from "@/hook/useInfiniteProducts";
 import ProductTrue from "@/models/ProductTrue";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import React, { useState, useEffect, useRef, useCallback } from "react";
 
 export interface Product {
@@ -115,15 +115,18 @@ const ProductCard: React.FC<{
 };
 
 const ProductPage: React.FC = () => {
-  /*  const [products, setProducts] = useState<Product[]>([]);
-  const [loading, setLoading] = useState(true); */
-  /*  const [productsExplores, setProductsExplores] = useState<ProductTrue[]>([]); */
-
   const [lolo, setLolo] = useState(true);
+  const searchParams = useSearchParams();
+
+  const query = searchParams.get("query");
+  const category = searchParams.get("category");
 
   const observer = useRef<IntersectionObserver>(null);
 
-  const { products, loading, hasMore, fetchMore } = useInfiniteProducts();
+  const { products, loading, hasMore, fetchMore } = useInfiniteProducts(
+    query,
+    category
+  );
 
   const lastCarElementRef = useCallback(
     (node: HTMLDivElement) => {

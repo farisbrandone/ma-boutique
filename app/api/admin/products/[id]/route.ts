@@ -68,7 +68,7 @@ const deleteHandler = async (req: Request, id: string) => {
 
 const getHandler = async (req: Request, id: string) => {
   await dbConnect();
-  const url = new URL(req.url);
+  /*  const url = new URL(req.url); */
 
   const product = await Product.findById(id);
   await disconnect();

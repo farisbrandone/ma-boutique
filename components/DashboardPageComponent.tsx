@@ -1,4 +1,4 @@
-/* "use client";
+"use client";
 
 import React, { useState } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
@@ -17,14 +17,19 @@ const queryClient = new QueryClient({
   },
 });
 
-const page: React.FC = () => {
+const DashboardPageComponent: React.FC = () => {
   const [showAddModal, setShowAddModal] = useState(false);
 
   return (
     <QueryClientProvider client={queryClient}>
       <AuthProvider>
         <div className="min-h-screen bg-gray-100">
-        
+          {/*  <Header onAddProduct={() => setShowAddModal(true)} />
+
+          <main className="container mx-auto p-4">
+            <SalesSummary />
+            <ProductTable />
+          </main> */}
 
           <ProtectedRoute>
             <Dashboard />
@@ -36,7 +41,7 @@ const page: React.FC = () => {
                 <h2 className="text-xl font-semibold mb-4">
                   Ajouter un produit
                 </h2>
-              
+                {/* Formulaire d'ajout ici */}
                 <button
                   onClick={() => setShowAddModal(false)}
                   className="mt-4 px-4 py-2 bg-gray-300 rounded"
@@ -53,12 +58,4 @@ const page: React.FC = () => {
   );
 };
 
-export default page;
- */
-
-import DashboardPageComponent from "@/components/DashboardPageComponent";
-import React from "react";
-
-export default function page() {
-  return <DashboardPageComponent />;
-}
+export default DashboardPageComponent;

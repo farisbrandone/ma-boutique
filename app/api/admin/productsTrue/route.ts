@@ -15,12 +15,12 @@ const handler = async (req: Request) => {
     );
   }
   if (req.method === "GET") {
-    console.log({ dondon: "dondon" });
     try {
       await dbConnect();
       const parsedUrl = new URL(req.url);
       const params = parsedUrl.searchParams;
       const {
+        screen = "false",
         page = "1",
         pageSize = "10",
         name,
@@ -29,8 +29,21 @@ const handler = async (req: Request) => {
         sortDirection,
       } = Object.fromEntries(params.entries());
       const query: any = {};
-      if (name) query.name = { $regex: name, $options: "i" };
-      if (category) query.category = category;
+
+      if (screen === "true") {
+        if (name === category) {
+          query.$or = [
+            { name: { $regex: name, $options: "i" } },
+            { category: { $regex: name, $options: "i" } },
+          ];
+        } else if (!!category) {
+          query.category = category;
+        }
+      } else {
+        console.log({ poutou: "poutou" });
+        if (name) query.name = { $regex: name, $options: "i" };
+        if (category) query.category = category;
+      }
 
       const sortOptions: any = {};
       if (sortField) {
@@ -58,6 +71,7 @@ const handler = async (req: Request) => {
         }
       );
     } catch (error) {
+      console.log(error);
       return NextResponse.json(
         {
           message: "Problem to post data",

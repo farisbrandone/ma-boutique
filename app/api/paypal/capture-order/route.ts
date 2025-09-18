@@ -1,6 +1,6 @@
 // pages/api/paypal/capture-order.ts
 import { NextResponse } from "next/server";
-import { client, paypal, environment } from "../../../lib/paypal";
+import { client, paypal /* , environment */ } from "../../../lib/paypal";
 
 export default async function handler(req: Request) {
   if (req.method !== "POST") {

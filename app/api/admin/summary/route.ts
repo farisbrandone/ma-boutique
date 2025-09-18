@@ -8,6 +8,9 @@ import User from "@/models/User";
 import { NextResponse } from "next/server";
 
 export const GET = async (req: Request) => {
+  if (false) {
+    console.log(req);
+  }
   const session = await auth();
   if (!session || (session && !session.user.isAdmin)) {
     return NextResponse.json(

@@ -28,7 +28,7 @@ function Layout({
   const { cart } = state;
 
   const [cardItemsCount, setCardItemsCount] = useState(0);
-
+  console.log(title);
   useEffect(() => {
     setCardItemsCount(cart.cartItems.reduce((a, c) => a + c.quantity, 0));
   }, [cart.cartItems]);

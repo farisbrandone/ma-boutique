@@ -1,11 +1,19 @@
 "use client";
 
+import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import React, { useState } from "react";
 
 const Sidebar: React.FC = () => {
-  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+  var window: Window & typeof globalThis = globalThis as Window &
+    typeof globalThis;
+  const [isMobile, setIsMobile] = useState<boolean>(window.innerWidth < 768);
   const [isOpen, setIsOpen] = useState(false);
+  const searchParams = useSearchParams();
 
+  const category = searchParams.get("category");
+  console.log({ category });
+  console.log("hohohohohoh");
   const categories = [
     {
       name: "vêtements Femmes",
@@ -54,6 +62,15 @@ const Sidebar: React.FC = () => {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  const classAdd = (item: string) => {
+    if (category === item.toLowerCase().replace(/ /g, "-")) {
+      return "#bd4444";
+    }
+    return "";
+  };
+
+  console.log({ value: classAdd("vêtements Hommes") });
+
   return (
     <div
       className={`sidebar ${isMobile ? "mobile" : " "} ${isOpen ? "open" : ""}`}
@@ -75,10 +92,15 @@ const Sidebar: React.FC = () => {
             key={index}
             className="sidebar-item max-sm:bg-[#bd4444] text-white"
           >
-            <a href={`#${category.name.toLowerCase().replace(/ /g, "-")}`}>
+            <Link
+              href={`/productPage?category=${category.name
+                .toLowerCase()
+                .replace(/ /g, "-")}`}
+              style={{ color: classAdd(category.name) }}
+            >
               {category.icon}
               {!isMobile && <span className="text">{category.name}</span>}
-            </a>
+            </Link>
           </li>
         ))}
       </ul>

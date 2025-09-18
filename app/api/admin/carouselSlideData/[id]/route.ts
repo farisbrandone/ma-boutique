@@ -2,16 +2,16 @@ import dbConnect, { disconnect } from "@/app/lib/mongodb";
 import { auth } from "@/auth";
 import CarouselSlide from "@/models/CarouselSlide";
 import ProductTrue from "@/models/ProductTrue";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
-const handler = async (
+/* const handler = async (
   req: Request,
   { params }: { params: { id: string } }
 ) => {
   const session = await auth();
   const { id } = params;
   console.log({ id });
-  if (!session /* || (session && !session.user.isAdmin) */) {
+  if (!session ) {
     return NextResponse.json(
       {
         message: "Admin signin required",
@@ -39,7 +39,7 @@ const handler = async (
       }
     );
   }
-};
+}; */
 
 const deleteHandler = async (req: Request, id: string) => {
   try {
@@ -67,6 +67,7 @@ const deleteHandler = async (req: Request, id: string) => {
       }
     );
   } catch (error) {
+    console.log(error);
     await disconnect();
     return NextResponse.json(
       {
@@ -106,6 +107,7 @@ const getHandler = async (req: Request, id: string) => {
       }
     );
   } catch (error) {
+    console.log(error);
     await disconnect();
     return NextResponse.json(
       {
@@ -126,7 +128,7 @@ const putHandler = async (req: Request, id: string) => {
   const order = bodyData.get("order");
   const isActive = bodyData.get("isActive");
   const imageUrl = bodyData.get("imageUrl");
-  let update = { altText, order, isActive, imageUrl };
+  const update = { altText, order, isActive, imageUrl };
 
   const slide = await CarouselSlide.findById(id);
   if (slide) {
@@ -187,6 +189,7 @@ const patchHandler = async (req: Request, id: string) => {
       );
     }
   } catch (error) {
+    console.log(error);
     await disconnect();
     return NextResponse.json(
       {
@@ -199,10 +202,78 @@ const patchHandler = async (req: Request, id: string) => {
   }
 };
 
-export {
+export async function GET(
+  request: NextRequest,
+  { params }: { params: { id: string } }
+) {
+  const session = await auth();
+  const { id } = params;
+
+  if (!session) {
+    return NextResponse.json(
+      { message: "Admin signin required" },
+      { status: 401 }
+    );
+  }
+
+  return getHandler(request, id);
+}
+
+export async function PUT(
+  request: NextRequest,
+  { params }: { params: { id: string } }
+) {
+  const session = await auth();
+  const { id } = params;
+
+  if (!session) {
+    return NextResponse.json(
+      { message: "Admin signin required" },
+      { status: 401 }
+    );
+  }
+
+  return putHandler(request, id);
+}
+
+export async function PATCH(
+  request: NextRequest,
+  { params }: { params: { id: string } }
+) {
+  const session = await auth();
+  const { id } = params;
+
+  if (!session) {
+    return NextResponse.json(
+      { message: "Admin signin required" },
+      { status: 401 }
+    );
+  }
+
+  return patchHandler(request, id);
+}
+
+export async function DELETE(
+  request: NextRequest,
+  { params }: { params: { id: string } }
+) {
+  const session = await auth();
+  const { id } = params;
+
+  if (!session) {
+    return NextResponse.json(
+      { message: "Admin signin required" },
+      { status: 401 }
+    );
+  }
+
+  return deleteHandler(request, id);
+}
+
+/* export {
   handler as GET,
   handler as POST,
   handler as PUT,
   handler as DELETE,
   handler as PATCH,
-};
+}; */

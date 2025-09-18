@@ -1,12 +1,12 @@
 import { Params } from "@/app/api/orders/[id]/route";
 import dbConnect, { disconnect } from "@/app/lib/mongodb";
-import { auth } from "@/auth";
+
 import OrderTrue from "@/models/OrderTrue";
 import ProductTrue from "@/models/ProductTrue";
 import { NextResponse } from "next/server";
 
 const handler = async (req: Request, { params }: Params) => {
-  const session = await auth();
+  /* const session = await auth(); */
   const { id } = params;
   console.log({ id });
   /* if (!session ) {
@@ -74,6 +74,7 @@ const deleteHandler = async (req: Request, id: string) => {
       }
     );
   } catch (error) {
+    console.log(error);
     await disconnect();
     return NextResponse.json(
       {
@@ -115,6 +116,7 @@ const getHandler = async (req: Request, id: string) => {
       }
     );
   } catch (error) {
+    console.log(error);
     await disconnect();
     return NextResponse.json(
       {

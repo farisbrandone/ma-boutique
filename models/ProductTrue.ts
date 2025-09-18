@@ -81,6 +81,11 @@ const productTrueSchema = new mongoose.Schema(
   }
 );
 
+productTrueSchema.index({
+  name: "text",
+  category: "text",
+});
+
 const ProductTrue =
   mongoose.models.ProductTrue ||
   mongoose.model("ProductTrue", productTrueSchema);

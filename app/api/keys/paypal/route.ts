@@ -1,8 +1,11 @@
 import { auth } from "@/auth";
-import { useSession } from "next-auth/react";
+
 import { NextResponse } from "next/server";
 
 export const GET = async (req: Request) => {
+  if (false) {
+    console.log(req);
+  }
   const session = await auth();
   if (!session) {
     return NextResponse.json(

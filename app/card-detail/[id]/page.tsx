@@ -3,7 +3,7 @@ import Header from "@/component-home/HeaderHome";
 import { API_URL } from "@/app/actions/dashboard/productAPI/service";
 import ProductTrue from "@/models/ProductTrue";
 
-const exampleProduct = {
+/* const exampleProduct = {
   id: "1",
   name: "Premium Comfort T-Shirt",
   price: 29.99,
@@ -21,7 +21,7 @@ const exampleProduct = {
     color: ["#000000", "#FFFFFF", "#FF0000", "#0000FF"],
     size: ["S", "M", "L", "XL"],
   },
-};
+}; */
 
 export default async function page({
   params,

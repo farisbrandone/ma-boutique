@@ -8,7 +8,10 @@ import ProductTrue from "@/models/ProductTrue";
 
 import { useState, useEffect, useCallback } from "react";
 
-export const useInfiniteProducts = () => {
+export const useInfiniteProducts = (
+  query: string | null,
+  category: string | null
+) => {
   const [products, setProducts] = useState<ProductTrue[]>([]);
   const [page, setPage] = useState(1);
   const [loading, setLoading] = useState(false);
@@ -17,12 +20,35 @@ export const useInfiniteProducts = () => {
 
   const fetchProductss = useCallback(async () => {
     if (loading || !hasMore) return;
-
+    let responseTrue: any;
     setLoading(true);
     try {
-      const responseTrue = await fetchProducts(page, 20, {
-        sortDirection: "desc",
-      });
+      if (query) {
+        responseTrue = await fetchProducts(
+          page,
+          20,
+          {
+            name: query,
+            category: query,
+            sortDirection: "desc",
+          },
+          true
+        );
+      } else if (category) {
+        responseTrue = await fetchProducts(
+          page,
+          20,
+          {
+            category: category,
+            sortDirection: "desc",
+          },
+          true
+        );
+      } else {
+        responseTrue = await fetchProducts(page, 20, {
+          sortDirection: "desc",
+        });
+      }
 
       /* 
         {

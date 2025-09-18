@@ -58,6 +58,7 @@ const postHandler = async (req: Request) => {
       }
     );
   } catch (error) {
+    console.log(error);
     await disconnect();
     return NextResponse.json(
       {

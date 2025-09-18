@@ -1,51 +1,49 @@
 "use client";
 
-import { getError } from "../lib-true/error";
-import axios from "axios";
-
 import Link from "next/link";
-
-import React from "react";
-import { useForm } from "react-hook-form";
-import { toast } from "react-toastify";
-import { RegisterValidationFormData } from "../lib/validations/registerValidations";
-import { useSearchParams } from "next/navigation";
 import { signIn } from "next-auth/react";
-import { ImageSpinner } from "@/hook/ImageSpinner";
+import React, { Suspense } from "react";
+import { useForm } from "react-hook-form";
+
+import { toast } from "react-toastify";
+
+import { useSearchParams } from "next/navigation";
+
+import InputFieldComponent from "@/component-login/InputFieldComponent";
 import Image from "next/image";
 import useIsMobile from "@/hook/useIsMobile";
+import { ImageSpinner } from "@/hook/ImageSpinner";
 import { GoogleIcon } from "@/component-login/GoogleIcon";
-import InputFieldComponent from "@/component-login/InputFieldComponent";
+import { LoginValidationFormData } from "@/app/lib/validations/loginValidation";
+import { getError } from "@/app/lib-true/error";
 
-export default function Register() {
+export default function LoginComponent() {
   const searchParams = useSearchParams();
   const redirect = searchParams.get("redirect");
+
   const isMobile = useIsMobile();
+
   /*  useEffect(() => {
     if (session?.user) {
+      console.log({ youyou: session?.user });
+      console.log("lolo");
       router.push(redirect || "/");
     }
   }, [router, session, redirect]); */
+
   const {
     register,
     handleSubmit,
-    getValues,
     formState: { errors },
-  } = useForm<RegisterValidationFormData>();
+  } = useForm<LoginValidationFormData>({
+    //resolver: zodResolver(LoginValidationSchema),
+  });
 
   const submitHandler = async ({
-    name,
     email,
     password,
-  }: RegisterValidationFormData) => {
+  }: LoginValidationFormData) => {
     try {
-      await axios.post("/api/auth/signup", {
-        redirect: false,
-        name,
-        email,
-        password,
-      });
-
       const result = await signIn("credentials", {
         redirect: false,
         email,
@@ -69,7 +67,7 @@ export default function Register() {
       <div className="flex items-center justify-center w-full">
         <div className="flex flex-col w-full p-3 md:w-[500px] ">
           <div className="flex flex-col items-center gap-2">
-            <p className="text-xl font-bold sm:text-2xl ">S&apos;inscrire</p>
+            <p className="text-xl font-bold sm:text-2xl ">Se connecter</p>
             <p className="text-[12px] sm:text-[14px] ">
               Entrez vos coordonnées ci-dessous
             </p>
@@ -80,38 +78,18 @@ export default function Register() {
             className="flex flex-col w-full gap-2 mt-[20px] items-center"
           >
             <InputFieldComponent
-              id="name"
-              label="Nom et prenom"
-              type="text"
-              register1={register}
-              getValues={getValues}
-              errors={errors}
-            />
-
-            <InputFieldComponent
               id="email"
               label="Email"
               type="email"
-              register1={register}
-              getValues={getValues}
+              register={register}
               errors={errors}
             />
 
             <InputFieldComponent
               id="password"
-              label="Mot de passe"
+              label="Password"
               type="password"
-              register1={register}
-              getValues={getValues}
-              errors={errors}
-            />
-
-            <InputFieldComponent
-              id="confirmPassword"
-              label="Confirmer le mot de passe"
-              type="password"
-              register1={register}
-              getValues={getValues}
+              register={register}
               errors={errors}
             />
 
@@ -120,24 +98,24 @@ export default function Register() {
                 type="submit"
                 className="bg-[#DB4444] text-center text-white text-[16px] sm:text-xl w-full border-none py-2 cursor-pointer "
               >
-                S&apos;inscrire
+                Se connecter
               </button>
               <button
                 type="button"
                 className="bg-[white] text-center flex items-center justify-center gap-2 text-black text-[16px] sm:text-xl w-full border border-solid border-[#6969699f] py-2 cursor-pointer "
               >
                 <GoogleIcon width={25} height={25} />{" "}
-                <span>S&apos;inscrire avec Google</span>
+                <span>Se connecter avec Google</span>
               </button>
             </div>
 
             <div className="mt-4 w-full text-center">
-              Tu as déja un compte? &nbsp;
+              Tu n&apos;as pas encore un compte? &nbsp;
               <Link
-                href={`/login?redirect=${redirect || "/"}`}
+                href={`/register?redirect=${redirect || "/"}`}
                 className="text-[#DB4444] underline "
               >
-                Connecte-toi ici
+                Inscrit-toi ici
               </Link>
             </div>
           </form>

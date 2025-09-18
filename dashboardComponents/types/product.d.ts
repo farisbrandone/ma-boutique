@@ -34,3 +34,14 @@ export interface PaginatedProducts {
   pageSize: number;
   totalPages: number;
 }
+
+export enum categorieProduct {
+  vf = "vêtements Femmes",
+  vh = "vêtements Hommes",
+  elect = "Electronics",
+  maico = "Maison et confort",
+  sport = "Sport",
+  jouet = "Jouets pour enfant",
+  sac = "Sacs",
+  sousvet = "Sous vetement",
+}

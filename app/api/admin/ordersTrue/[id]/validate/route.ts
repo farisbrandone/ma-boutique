@@ -97,6 +97,7 @@ const patchHandler = async (req: Request, id: string) => {
       }
     );
   } catch (error) {
+    console.log(error);
     await disconnect();
     return NextResponse.json(
       {

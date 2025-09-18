@@ -1,5 +1,5 @@
 import dbConnect, { disconnect } from "@/app/lib/mongodb";
-import { useSession } from "next-auth/react";
+
 import Order from "@/models/Order";
 
 import { NextResponse } from "next/server";

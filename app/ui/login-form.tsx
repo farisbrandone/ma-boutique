@@ -1,6 +1,5 @@
 "use client";
 
-import { Lusitana } from "next/font/google";
 import {
   AtSymbolIcon,
   KeyIcon,

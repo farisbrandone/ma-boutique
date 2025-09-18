@@ -3,13 +3,14 @@
 import React, { useState, useEffect, useRef } from "react";
 import { FiSearch, FiMenu, FiX } from "react-icons/fi";
 import { motion, AnimatePresence, type Variants } from "framer-motion";
+import { useRouter } from "next/navigation";
 
 const Header: React.FC = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const mobileMenuRef = useRef<HTMLDivElement>(null);
-
+  const router = useRouter();
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10);
@@ -37,7 +38,9 @@ const Header: React.FC = () => {
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
     console.log("Recherche:", searchQuery);
-    // Ajoutez ici votre logique de recherche
+    router.push(
+      `/productPage?query=${searchQuery.toLowerCase().replace(/ /g, "-")}`
+    );
   };
 
   // Variantes d'animation
